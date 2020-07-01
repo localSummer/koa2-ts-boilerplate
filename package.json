@@ -1,0 +1,50 @@
+{
+  "name": "koa2-ts",
+  "version": "1.0.0",
+  "description": "koa2 + typescript 开发环境",
+  "main": "dist/app.js",
+  "scripts": {
+    "compile": "npx tsc --project tsconfig.json -w",
+    "dev": "npx nodemon bin/www",
+    "build": "npx tsc --project tsconfig.json",
+    "prd": "npx pm2 start bin/www",
+    "eslint": "npx eslint src --ext .ts"
+  },
+  "keywords": [
+    "koa2",
+    "typescript"
+  ],
+  "author": "localsummer",
+  "homepage": "https://github.com/localSummer/rollup-pro/tree/koa-tools",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/koa": "^2.11.3",
+    "@types/koa-bodyparser": "^4.3.0",
+    "@types/koa-json": "^2.0.18",
+    "@types/koa-logger": "^3.1.1",
+    "@types/koa-router": "^7.4.1",
+    "@types/koa-static": "^4.0.1",
+    "@types/koa2-cors": "^2.0.1",
+    "@typescript-eslint/eslint-plugin": "^2.11.0",
+    "@typescript-eslint/parser": "^2.11.0",
+    "eslint": "^6.7.2",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "mddir": "^1.1.1",
+    "nodemon": "^2.0.4",
+    "prettier": "^1.19.1",
+    "typescript": "^3.6.4"
+  },
+  "dependencies": {
+    "debug": "^4.1.1",
+    "koa": "^2.13.0",
+    "koa-bodyparser": "^4.3.0",
+    "koa-json": "^2.0.2",
+    "koa-logger": "^3.2.1",
+    "koa-onerror": "^4.1.0",
+    "koa-router": "^9.0.1",
+    "koa-static": "^5.0.0",
+    "koa2-cors": "^2.0.6",
+    "pm2": "^4.4.0"
+  }
+}
