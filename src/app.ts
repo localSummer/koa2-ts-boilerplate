@@ -7,6 +7,7 @@ import logger from 'koa-logger';
 import koaStatic from 'koa-static';
 import path from 'path';
 
+import koaResponse from './middlewares/response';
 import index from './routes';
 
 const app = new Koa();
@@ -32,6 +33,8 @@ app.use(async (ctx: Koa.Context, next: Koa.Next) => {
   const ms = Date.now() - start;
   console.log(`${ctx.method} ${ctx.url} - ${ms}ms`);
 });
+
+app.use(koaResponse);
 
 // 路由
 app.use(index.routes());

@@ -14,10 +14,7 @@ class Validator {
       (Object.keys(result) as ['username', 'email', 'age']).filter((name) => result[name].hasError)
         .length > 0
     ) {
-      ctx.body = {
-        code: Types.EResponseCode.ERROR,
-        msg: Types.EResponseMsg.INVALID_MSG
-      };
+      ctx.error(Types.EResponseMsg.INVALID_PARAMS);
     } else {
       next();
     }
