@@ -15,28 +15,36 @@
     |-- .eslintignore
     |-- .eslintrc.js
     |-- .gitignore
-    |-- prettier.config.js
+    |-- LICENCE
     |-- README.md
     |-- package-lock.json
     |-- package.json
+    |-- prettier.config.js
     |-- tsconfig.json
-    |-- .vscode
-    |   |-- settings.json
     |-- bin
     |   |-- www
     |-- config
     |   |-- constant.js
-    |-- dist 打包输入目录
-    |   |-- app.js
-    |   |-- routes
-    |       |-- index.js
-    |-- public 公共资源访问目录
+    |-- public
     |   |-- style.css
-    |-- src 源代码目录
+    |-- src
         |-- app.ts
         |-- global.d.ts
+        |-- controllers
+        |   |-- userController.ts
+        |-- middlewares
+        |   |-- response.ts
+        |   |-- validator.ts
+        |-- models
         |-- routes
-            |-- index.ts
+        |   |-- index.ts
+        |-- rules
+        |   |-- login.ts
+        |-- services
+        |-- types
+        |   |-- index.ts
+        |-- utils
+            |-- helper.ts
 ```
 
 #### app.ts
@@ -51,6 +59,7 @@ import logger from 'koa-logger';
 import koaStatic from 'koa-static';
 import path from 'path';
 
+import koaResponse from './middlewares/response';
 import index from './routes';
 
 const app = new Koa();
@@ -70,12 +79,14 @@ app.use(logger());
 app.use(koaStatic(path.resolve(__dirname, '../public')));
 
 // logger
-app.use(async (ctx: Koa.Context, next: Koa.Next) => {
+app.use(async (ctx, next) => {
   const start = Date.now();
   await next();
   const ms = Date.now() - start;
   console.log(`${ctx.method} ${ctx.url} - ${ms}ms`);
 });
+
+app.use(koaResponse);
 
 // 路由
 app.use(index.routes());
