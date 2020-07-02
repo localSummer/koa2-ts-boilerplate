@@ -27,7 +27,7 @@ app.use(logger());
 app.use(koaStatic(path.resolve(__dirname, '../public')));
 
 // logger
-app.use(async (ctx: Koa.Context, next: Koa.Next) => {
+app.use(async (ctx, next) => {
   const start = Date.now();
   await next();
   const ms = Date.now() - start;
