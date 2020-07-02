@@ -8,6 +8,7 @@ import koaStatic from 'koa-static';
 import path from 'path';
 
 import koaResponse from './middlewares/response';
+import { accessLogger, systemLogger } from './utils/log4';
 import index from './routes';
 
 const app = new Koa();
@@ -34,6 +35,7 @@ app.use(async (ctx, next) => {
   console.log(`${ctx.method} ${ctx.url} - ${ms}ms`);
 });
 
+app.use(accessLogger());
 app.use(koaResponse);
 
 // 路由
@@ -43,6 +45,7 @@ app.use(index.allowedMethods());
 // error-handling
 app.on('error', (err: Error, ctx: Koa.Context) => {
   console.error('server error', err, ctx);
+  systemLogger.error(err);
 });
 
 export default app;

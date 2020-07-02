@@ -5,9 +5,9 @@
   "main": "dist/app.js",
   "scripts": {
     "compile": "npx tsc --project tsconfig.json -w",
-    "dev": "npx nodemon bin/www",
+    "dev": "cross-env NODE_ENV=development npx nodemon bin/www",
     "build": "npx tsc --project tsconfig.json",
-    "prd": "npx pm2 start bin/www",
+    "prd": "cross-env NODE_ENV=development npx pm2 start bin/www",
     "clear": "rm -r dist",
     "eslint": "npx eslint src --ext .ts"
   },
@@ -22,18 +22,21 @@
     "@types/koa": "^2.11.3",
     "@types/koa-bodyparser": "^4.3.0",
     "@types/koa-json": "^2.0.18",
+    "@types/koa-log4": "^2.3.2",
     "@types/koa-logger": "^3.1.1",
     "@types/koa-router": "^7.4.1",
     "@types/koa-static": "^4.0.1",
     "@types/koa2-cors": "^2.0.1",
     "@typescript-eslint/eslint-plugin": "^2.11.0",
     "@typescript-eslint/parser": "^2.11.0",
+    "cross-env": "^7.0.2",
     "eslint": "^6.7.2",
     "eslint-config-prettier": "^6.7.0",
     "eslint-plugin-prettier": "^3.1.1",
     "mddir": "^1.1.1",
     "nodemon": "^2.0.4",
     "prettier": "^1.19.1",
+    "sequelize-cli": "^6.1.0",
     "typescript": "^3.6.4"
   },
   "dependencies": {
@@ -41,12 +44,14 @@
     "koa": "^2.13.0",
     "koa-bodyparser": "^4.3.0",
     "koa-json": "^2.0.2",
+    "koa-log4": "^2.3.2",
     "koa-logger": "^3.2.1",
     "koa-onerror": "^4.1.0",
     "koa-router": "^9.0.1",
     "koa-static": "^5.0.0",
     "koa2-cors": "^2.0.6",
     "pm2": "^4.4.0",
-    "schema-typed": "^1.5.1"
+    "schema-typed": "^1.5.1",
+    "sequelize": "^6.2.4"
   }
 }
