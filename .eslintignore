@@ -2,5 +2,5 @@ node_modules
 dist
 coverage
 config
-babel.config.js
 bin
+public

@@ -1,9 +1,14 @@
 import Router from 'koa-router';
+import Validator from '../middlewares/validator';
+import { EResponseCode } from '../types';
 
 const router = new Router();
 
-router.get('/', async (ctx, next) => {
-  ctx.body = 'test';
+router.get('/', Validator.validLogin, async (ctx, next) => {
+  ctx.body = {
+    code: EResponseCode.SUCCESS,
+    data: {}
+  };
   next();
 });
 

@@ -8,6 +8,7 @@
     "dev": "npx nodemon bin/www",
     "build": "npx tsc --project tsconfig.json",
     "prd": "npx pm2 start bin/www",
+    "clear": "rm -r dist",
     "eslint": "npx eslint src --ext .ts"
   },
   "keywords": [
@@ -45,6 +46,7 @@
     "koa-router": "^9.0.1",
     "koa-static": "^5.0.0",
     "koa2-cors": "^2.0.6",
-    "pm2": "^4.4.0"
+    "pm2": "^4.4.0",
+    "schema-typed": "^1.5.1"
   }
 }
