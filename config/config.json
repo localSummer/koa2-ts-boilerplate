@@ -1,0 +1,47 @@
+{
+  "development": {
+    "username": "root",
+    "password": "summer",
+    "database": "todo_koa2_api",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "timezone": "+08:00",
+    "define": {
+      "underscored": true,
+      "charset": "utf8mb4",
+      "dialectOptions": {
+        "collate": "utf8mb4_general_ci"
+      }
+    }
+  },
+  "test": {
+    "username": "root",
+    "password": "summer",
+    "database": "todo_koa2_api",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "timezone": "+08:00",
+    "define": {
+      "underscored": true,
+      "charset": "utf8mb4",
+      "dialectOptions": {
+        "collate": "utf8mb4_general_ci"
+      }
+    }
+  },
+  "production": {
+    "username": "root",
+    "password": "summer",
+    "database": "todo_koa2_api",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "timezone": "+08:00",
+    "define": {
+      "underscored": true,
+      "charset": "utf8mb4",
+      "dialectOptions": {
+        "collate": "utf8mb4_general_ci"
+      }
+    }
+  }
+}

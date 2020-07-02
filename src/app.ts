@@ -28,7 +28,7 @@ app.use(json());
 app.use(koaLogger());
 app.use(koaStatic(path.resolve(__dirname, '../public')));
 
-// logger
+// logger 控制台请求输出
 app.use(async (ctx, next) => {
   const start = Date.now();
   await next();
@@ -36,7 +36,9 @@ app.use(async (ctx, next) => {
   console.log(`${ctx.method} ${ctx.url} - ${ms}ms`);
 });
 
+// 请求日志输出到文件
 app.use(accessLogger());
+// 自定义控制台输出日志
 app.use(logger(defaultLogger));
 app.use(koaResponse);
 
@@ -47,6 +49,7 @@ app.use(index.allowedMethods());
 // error-handling
 app.on('error', (err: Error, ctx: Koa.Context) => {
   console.error('server error', err, ctx);
+  // 系统日志输出到文件
   systemLogger.error(err);
 });
 
