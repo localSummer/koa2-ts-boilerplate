@@ -1,3 +1,4 @@
+import log4js from 'koa-log4';
 import { TSuccess, TError } from '../middlewares/response';
 
 // 为 Context 类型扩展自定义属性
@@ -9,6 +10,7 @@ declare module 'koa' {
   interface DefaultContext {
     success: TSuccess;
     error: TError;
+    logger: log4js.Logger;
   }
 }
 

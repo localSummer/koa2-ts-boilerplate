@@ -3,12 +3,13 @@ import onerror from 'koa-onerror';
 import cors from 'koa2-cors';
 import bodyparser from 'koa-bodyparser';
 import json from 'koa-json';
-import logger from 'koa-logger';
+import koaLogger from 'koa-logger';
 import koaStatic from 'koa-static';
 import path from 'path';
 
 import koaResponse from './middlewares/response';
-import { accessLogger, systemLogger } from './utils/log4';
+import logger from './middlewares/logger';
+import { accessLogger, systemLogger, defaultLogger } from './utils/log4';
 import index from './routes';
 
 const app = new Koa();
@@ -24,7 +25,7 @@ app.use(
   })
 );
 app.use(json());
-app.use(logger());
+app.use(koaLogger());
 app.use(koaStatic(path.resolve(__dirname, '../public')));
 
 // logger
@@ -36,6 +37,7 @@ app.use(async (ctx, next) => {
 });
 
 app.use(accessLogger());
+app.use(logger(defaultLogger));
 app.use(koaResponse);
 
 // 路由
