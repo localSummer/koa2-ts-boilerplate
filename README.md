@@ -76,12 +76,15 @@ import onerror from 'koa-onerror';
 import cors from 'koa2-cors';
 import bodyparser from 'koa-bodyparser';
 import json from 'koa-json';
-import logger from 'koa-logger';
+import koaLogger from 'koa-logger';
 import koaStatic from 'koa-static';
 import path from 'path';
 
 import koaResponse from './middlewares/response';
+import logger from './middlewares/logger';
+import { systemLogger, defaultLogger, accessLogger } from './utils/log4';
 import index from './routes';
+import Helper from './utils/helper';
 
 const app = new Koa();
 
@@ -96,17 +99,20 @@ app.use(
   })
 );
 app.use(json());
-app.use(logger());
+app.use(koaLogger());
 app.use(koaStatic(path.resolve(__dirname, '../public')));
 
-// logger
+// logger 控制台请求输出
 app.use(async (ctx, next) => {
   const start = Date.now();
   await next();
   const ms = Date.now() - start;
   console.log(`${ctx.method} ${ctx.url} - ${ms}ms`);
+  accessLogger.info(Helper.logFormat(ctx, ms));
 });
 
+// 自定义控制台输出日志
+app.use(logger(defaultLogger));
 app.use(koaResponse);
 
 // 路由
@@ -116,6 +122,8 @@ app.use(index.allowedMethods());
 // error-handling
 app.on('error', (err: Error, ctx: Koa.Context) => {
   console.error('server error', err, ctx);
+  // 系统日志输出到文件
+  systemLogger.error(err);
 });
 
 export default app;
