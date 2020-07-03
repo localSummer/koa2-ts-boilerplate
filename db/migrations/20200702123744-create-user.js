@@ -1,27 +1,37 @@
+/* eslint-disable @typescript-eslint/camelcase */
 'use strict';
+
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('users', {
-      id: {
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
-        type: Sequelize.INTEGER
+    await queryInterface.createTable(
+      'user',
+      {
+        id: {
+          type: Sequelize.INTEGER.UNSIGNED,
+          autoIncrement: true,
+          allowNull: false,
+          primaryKey: true
+        },
+        name: {
+          type: Sequelize.STRING,
+          allowNull: false,
+          defaultValue: ''
+        },
+        preferred_name: {
+          type: Sequelize.STRING,
+          allowNull: true,
+          defaultValue: null
+        },
+        created_at: Sequelize.DATE,
+        updated_at: Sequelize.DATE
       },
-      name: {
-        type: Sequelize.STRING
-      },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
+      {
+        charset: 'utf8mb4',
+        collate: 'utf8mb4_general_ci'
       }
-    });
+    );
   },
-  down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('users');
+  down: async (queryInterface) => {
+    await queryInterface.dropTable('user');
   }
 };

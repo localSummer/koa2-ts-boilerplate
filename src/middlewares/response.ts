@@ -27,7 +27,7 @@ const koaResponse = async (ctx: Koa.Context, next: Koa.Next) => {
     };
   };
 
-  next();
+  await next();
 };
 
 export default koaResponse;

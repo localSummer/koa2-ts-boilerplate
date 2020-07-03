@@ -16,7 +16,7 @@ class Validator {
     ) {
       ctx.error(Types.EResponseMsg.INVALID_PARAMS);
     } else {
-      next();
+      await next();
     }
   }
 }
