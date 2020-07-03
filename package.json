@@ -9,7 +9,9 @@
     "build": "npx tsc --project tsconfig.json",
     "prd": "cross-env NODE_ENV=development npx pm2 start bin/www",
     "clear": "rm -r dist",
-    "eslint": "npx eslint src --ext .ts"
+    "eslint": "npx eslint src --ext .ts",
+    "gulp-compile": "npx gulp dev",
+    "gulp-build": "npx gulp build"
   },
   "keywords": [
     "koa2",
@@ -33,6 +35,11 @@
     "eslint": "^6.7.2",
     "eslint-config-prettier": "^6.7.0",
     "eslint-plugin-prettier": "^3.1.1",
+    "gulp": "^4.0.2",
+    "gulp-clean": "^0.4.0",
+    "gulp-cli": "^2.3.0",
+    "gulp-typescript": "^6.0.0-alpha.1",
+    "gulp-uglify-es": "^2.0.0",
     "mddir": "^1.1.1",
     "nodemon": "^2.0.4",
     "prettier": "^1.19.1",
