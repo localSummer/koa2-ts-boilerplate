@@ -1,5 +1,5 @@
 import path from 'path';
-import log4js from 'koa-log4';
+import log4js from 'log4js';
 
 log4js.configure({
   appenders: {
@@ -26,11 +26,11 @@ log4js.configure({
   categories: {
     default: { appenders: ['out'], level: 'info' },
     access: { appenders: ['access'], level: 'info' },
-    application: { appenders: ['application'], level: 'WARN' }
+    application: { appenders: ['application'], level: 'warn' }
   }
 });
 
-export const accessLogger = () => log4js.koaLogger(log4js.getLogger('access')); // 记录所有访问级别的日志
+export const accessLogger = log4js.getLogger('access'); // 记录所有访问级别的日志
 
 export const systemLogger = log4js.getLogger('application'); // 记录所有应用级别的日志
 

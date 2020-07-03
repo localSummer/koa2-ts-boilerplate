@@ -1,4 +1,4 @@
-import log4js from 'koa-log4';
+import log4js from 'log4js';
 import { TSuccess, TError } from '../middlewares/response';
 
 // 为 Context 类型扩展自定义属性

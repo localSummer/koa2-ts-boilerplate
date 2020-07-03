@@ -9,8 +9,9 @@ import path from 'path';
 
 import koaResponse from './middlewares/response';
 import logger from './middlewares/logger';
-import { accessLogger, systemLogger, defaultLogger } from './utils/log4';
+import { systemLogger, defaultLogger, accessLogger } from './utils/log4';
 import index from './routes';
+import Helper from './utils/helper';
 
 const app = new Koa();
 
@@ -34,10 +35,9 @@ app.use(async (ctx, next) => {
   await next();
   const ms = Date.now() - start;
   console.log(`${ctx.method} ${ctx.url} - ${ms}ms`);
+  accessLogger.info(Helper.logFormat(ctx, ms));
 });
 
-// 请求日志输出到文件
-app.use(accessLogger());
 // 自定义控制台输出日志
 app.use(logger(defaultLogger));
 app.use(koaResponse);
