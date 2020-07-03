@@ -28,11 +28,17 @@ function dev() {
       .pipe(gulp.dest('dist'));
   };
   compile();
-  watch(['src/**/*.ts'], function(cb) {
-    // body omitted
-    compile();
-    cb();
-  });
+  watch(
+    ['src/**/*.ts'],
+    {
+      delay: 200
+    },
+    function(cb) {
+      // body omitted
+      compile();
+      cb();
+    }
+  );
 }
 
 exports.dev = dev;

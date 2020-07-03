@@ -2,10 +2,13 @@
 ```javascript
 "scripts": {
   "compile": "npx tsc --project tsconfig.json -w",
-  "dev": "npx nodemon bin/www",
+  "dev": "cross-env NODE_ENV=development npx nodemon bin/www",
   "build": "npx tsc --project tsconfig.json",
-  "prd": "npx pm2 start bin/www",
-  "eslint": "npx eslint src --ext .ts"
+  "prd": "cross-env NODE_ENV=development npx pm2 start bin/www",
+  "clear": "rm -r dist",
+  "eslint": "npx eslint src --ext .ts",
+  "gulp-compile": "npx gulp dev",
+  "gulp-build": "npx gulp build"
 },
 ```
 
@@ -15,8 +18,10 @@
     |-- .eslintignore
     |-- .eslintrc.js
     |-- .gitignore
+    |-- .sequelizerc
     |-- LICENCE
     |-- README.md
+    |-- gulpfile.js
     |-- package-lock.json
     |-- package.json
     |-- prettier.config.js
@@ -25,6 +30,16 @@
     |   |-- www
     |-- config
     |   |-- constant.js
+    |   |-- db.json
+    |-- db
+    |   |-- migrations
+    |   |   |-- 20200702123744-create-user.js
+    |   |-- seeders
+    |-- logs
+    |   |-- access.log-2020-07-02.log
+    |   |-- access.log.-2020-07-03.log
+    |   |-- application.log-2020-07-02.log
+    |   |-- application.log.-2020-07-03.log
     |-- public
     |   |-- style.css
     |-- src
@@ -33,18 +48,24 @@
         |-- controllers
         |   |-- userController.ts
         |-- middlewares
+        |   |-- logger.ts
         |   |-- response.ts
         |   |-- validator.ts
         |-- models
+        |   |-- connection.ts
+        |   |-- index.ts
+        |   |-- user.ts
         |-- routes
         |   |-- index.ts
         |-- rules
         |   |-- login.ts
         |-- services
+        |   |-- userService.ts
         |-- types
         |   |-- index.ts
         |-- utils
             |-- helper.ts
+            |-- log4.ts
 ```
 
 #### app.ts

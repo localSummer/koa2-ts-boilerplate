@@ -18,7 +18,11 @@
     "typescript"
   ],
   "author": "localsummer",
-  "homepage": "git@github.com:localSummer/koa2-ts.git",
+  "homepage": "https://github.com/localSummer/koa2-ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/localSummer/koa2-ts"
+  },
   "license": "ISC",
   "devDependencies": {
     "@types/koa": "^2.11.3",
