@@ -1,3 +1,14 @@
+### 技术栈
+koa2 + typescript + sequelize + sequelize-cli + mysql + log4js + pm2 + gulp
+
+### 数据库操作
+1. npx sequelize db:create --charset "utf8mb4" --collate "utf8mb4_general_ci" 同步数据库
+2. npx sequelize db:migrate 同步表
+
+### 项目启动
+1. npm run compile
+2. npm run dev
+
 #### scripts
 ```javascript
 "scripts": {
