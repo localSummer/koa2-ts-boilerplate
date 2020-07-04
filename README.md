@@ -15,7 +15,7 @@ koa2 + typescript + sequelize + sequelize-cli + mysql + log4js + pm2 + gulp
   "compile": "npx tsc --project tsconfig.json -w",
   "dev": "cross-env NODE_ENV=development npx nodemon bin/www",
   "build": "npx tsc --project tsconfig.json",
-  "prd": "cross-env NODE_ENV=development npx pm2 start bin/www",
+  "prd": "cross-env NODE_ENV=production npx pm2 start bin/www",
   "clear": "rm -r dist",
   "eslint": "npx eslint src --ext .ts",
   "gulp-compile": "npx gulp dev",
