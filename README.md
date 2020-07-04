@@ -1,6 +1,16 @@
 ### 技术栈
 koa2 + typescript + sequelize + sequelize-cli + mysql + log4js + pm2 + gulp
 
+### 功能支持
+1. typescript
+2. sequelize orm
+3. log4js 日志处理
+4. @koa/multer 文件上传
+5. schema-typed 请求参数校验
+6. ctx 自定义参数（及类型）扩展 `ctx.success` `ctx.error` `ctx.logger`
+
+> 注意：
+
 ### 数据库操作
 1. `npx sequelize db:create --charset "utf8mb4" --collate "utf8mb4_general_ci"` 同步数据库
 2. `npx sequelize db:migrate` 同步表
