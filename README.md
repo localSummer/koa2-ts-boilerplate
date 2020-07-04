@@ -29,9 +29,9 @@ koa2 + typescript + sequelize + sequelize-cli + mysql + jest + log4js + pm2 + gu
 ```javascript
 "scripts": {
   "compile": "tsc --project tsconfig.json -w",
-  "dev": "cross-env NODE_ENV=development npx nodemon bin/www",
+  "dev": "cross-env NODE_ENV=development nodemon bin/www",
   "build": "tsc --project tsconfig.json",
-  "prd": "cross-env NODE_ENV=production npx pm2 start bin/www",
+  "prd": "cross-env NODE_ENV=production pm2 start bin/www",
   "clear": "rm -r dist",
   "eslint": "eslint src --ext .ts",
   "gulp-compile": "gulp dev",
