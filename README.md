@@ -1,5 +1,5 @@
 ### 技术栈
-koa2 + typescript + sequelize + sequelize-cli + mysql + log4js + pm2 + gulp
+koa2 + typescript + sequelize + sequelize-cli + mysql + jest + log4js + pm2 + gulp
 
 ### 功能支持
 1. typescript
@@ -62,41 +62,50 @@ koa2 + typescript + sequelize + sequelize-cli + mysql + log4js + pm2 + gulp
     |-- config
     |   |-- constant.js
     |   |-- db.json
+    |   |-- jest
+    |       |-- cssTransform.js
+    |       |-- fileTransform.js
+    |-- coverage
     |-- db
     |   |-- migrations
     |   |   |-- 20200702123744-create-user.js
     |   |-- seeders
+    |-- dist
     |-- logs
-    |   |-- access.log-2020-07-02.log
-    |   |-- access.log.-2020-07-03.log
-    |   |-- application.log-2020-07-02.log
-    |   |-- application.log.-2020-07-03.log
+    |   |-- access.log.-2020-07-04.log
+    |   |-- application.log.-2020-07-04.log
     |-- public
     |   |-- style.css
     |-- src
-        |-- app.ts
-        |-- global.d.ts
-        |-- controllers
-        |   |-- userController.ts
-        |-- middlewares
-        |   |-- logger.ts
-        |   |-- response.ts
-        |   |-- validator.ts
-        |-- models
-        |   |-- connection.ts
-        |   |-- index.ts
-        |   |-- user.ts
-        |-- routes
-        |   |-- index.ts
-        |-- rules
-        |   |-- login.ts
-        |-- services
-        |   |-- userService.ts
-        |-- types
-        |   |-- index.ts
-        |-- utils
-            |-- helper.ts
-            |-- log4.ts
+    |   |-- app.ts
+    |   |-- global.d.ts
+    |   |-- __test__
+    |   |   |-- format.test.ts
+    |   |-- controllers
+    |   |   |-- userController.ts
+    |   |-- middlewares
+    |   |   |-- logger.ts
+    |   |   |-- response.ts
+    |   |   |-- upload.ts
+    |   |   |-- validator.ts
+    |   |-- models
+    |   |   |-- connection.ts
+    |   |   |-- index.ts
+    |   |   |-- user.ts
+    |   |-- routes
+    |   |   |-- index.ts
+    |   |-- rules
+    |   |   |-- login.ts
+    |   |-- services
+    |   |   |-- userService.ts
+    |   |-- types
+    |   |   |-- index.ts
+    |   |-- utils
+    |       |-- helper.ts
+    |       |-- log4.ts
+    |-- uploads
+        |-- 2020-07-04
+            |-- 1593850667585.jpg
 ```
 
 #### app.ts
@@ -131,7 +140,10 @@ app.use(
 );
 app.use(json());
 app.use(koaLogger());
+// 公共资源访问
 app.use(koaStatic(path.resolve(__dirname, '../public')));
+// 用户上传资源访问
+app.use(koaStatic(path.resolve(__dirname, '../uploads')));
 
 // logger 控制台请求输出
 app.use(async (ctx, next) => {
