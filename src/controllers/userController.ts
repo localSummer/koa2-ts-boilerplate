@@ -6,6 +6,12 @@ class UserController {
     const user = await UserService.findUserById(1);
     ctx.success(user);
   }
+
+  static async uploadAvator(ctx: Koa.Context) {
+    ctx.logger.warn(ctx.file);
+    ctx.logger.warn(ctx.request.body);
+    ctx.success('上传成功');
+  }
 }
 
 export default UserController;

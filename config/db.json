@@ -3,7 +3,7 @@
     "username": "root",
     "password": "Anicl0ud",
     "database": "todo_koa2_api",
-    "host": "localhost",
+    "host": "127.0.0.1",
     "dialect": "mysql",
     "timezone": "+08:00",
     "define": {
@@ -19,7 +19,7 @@
     "username": "root",
     "password": "Anicl0ud",
     "database": "todo_koa2_api",
-    "host": "localhost",
+    "host": "127.0.0.1",
     "dialect": "mysql",
     "timezone": "+08:00",
     "define": {
@@ -35,7 +35,7 @@
     "username": "root",
     "password": "Anicl0ud",
     "database": "todo_koa2_api",
-    "host": "localhost",
+    "host": "127.0.0.1",
     "dialect": "mysql",
     "timezone": "+08:00",
     "define": {
