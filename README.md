@@ -7,7 +7,7 @@ koa2 + typescript + sequelize + sequelize-cli + mysql + log4js + pm2 + gulp
 
 ### 项目启动
 #### dev 模式
-1. `npm run compile` 编译后 nodemon 重启服务 `gulp-compile` 编译后延迟 `200ms（可配置）` nodemon 重启服务
+1. `npm run compile` 编译后 nodemon 重启服务 或 `gulp-compile` 编译后延迟 `200ms（可配置）` nodemon 重启服务
 2. `npm run dev`
 
 #### prd模式
