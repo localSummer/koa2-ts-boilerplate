@@ -7,7 +7,7 @@ koa2 + typescript + sequelize + sequelize-cli + mysql + log4js + pm2 + gulp
 3. log4js 日志处理
 4. @koa/multer 文件上传
 5. schema-typed 请求参数校验
-6. ctx 自定义参数（及类型）扩展 `ctx.success` `ctx.error` `ctx.logger`
+6. ctx 自定义属性（及类型）扩展，如 `ctx.success` `ctx.error` `ctx.logger` [koa2+ts中为Context扩展自定义属性](https://blog.csdn.net/roamingcode/article/details/107084933)
 
 > 注意：所有自定义中间件在 `next` 调用时，需使用右侧格式 `await next()`，否则在 `controller` 中操作数据库会引发 `ctx.body` 数据丢失问题
 
