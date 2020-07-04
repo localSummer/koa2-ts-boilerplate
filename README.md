@@ -9,7 +9,7 @@ koa2 + typescript + sequelize + sequelize-cli + mysql + log4js + pm2 + gulp
 5. schema-typed 请求参数校验
 6. ctx 自定义参数（及类型）扩展 `ctx.success` `ctx.error` `ctx.logger`
 
-> 注意：
+> 注意：所有自定义中间件在 `next` 调用时，需使用右侧格式 `await next()`，否则在 `controller` 中操作数据库会引发 `ctx.body` 数据丢失问题
 
 ### 数据库操作
 1. `npx sequelize db:create --charset "utf8mb4" --collate "utf8mb4_general_ci"` 同步数据库
