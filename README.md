@@ -8,6 +8,7 @@ koa2 + typescript + sequelize + sequelize-cli + mysql + log4js + pm2 + gulp
 4. @koa/multer 文件上传
 5. schema-typed 请求参数校验
 6. ctx 自定义属性（及类型）扩展，如 `ctx.success` `ctx.error` `ctx.logger` [koa2+ts中为Context扩展自定义属性](https://blog.csdn.net/roamingcode/article/details/107084933)
+7. jest 测试
 
 > 注意：所有自定义中间件在 `next` 调用时，需使用右侧格式 `await next()`，否则在 `controller` 中操作数据库会引发 `ctx.body` 数据丢失问题
 
@@ -27,14 +28,17 @@ koa2 + typescript + sequelize + sequelize-cli + mysql + log4js + pm2 + gulp
 #### scripts
 ```javascript
 "scripts": {
-  "compile": "npx tsc --project tsconfig.json -w",
+  "compile": "tsc --project tsconfig.json -w",
   "dev": "cross-env NODE_ENV=development npx nodemon bin/www",
-  "build": "npx tsc --project tsconfig.json",
+  "build": "tsc --project tsconfig.json",
   "prd": "cross-env NODE_ENV=production npx pm2 start bin/www",
   "clear": "rm -r dist",
-  "eslint": "npx eslint src --ext .ts",
-  "gulp-compile": "npx gulp dev",
-  "gulp-build": "npx gulp build"
+  "eslint": "eslint src --ext .ts",
+  "gulp-compile": "gulp dev",
+  "gulp-build": "gulp build",
+  "test": "jest --passWithNoTests --updateSnapshot",
+  "test:watch": "jest --coverage --watch",
+  "test:prod": "npm run eslint && npm run test -- --no-cache"
 },
 ```
 
@@ -48,6 +52,7 @@ koa2 + typescript + sequelize + sequelize-cli + mysql + log4js + pm2 + gulp
     |-- LICENCE
     |-- README.md
     |-- gulpfile.js
+    |-- jest.config.js
     |-- package-lock.json
     |-- package.json
     |-- prettier.config.js

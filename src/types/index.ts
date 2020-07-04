@@ -14,7 +14,7 @@ declare module 'koa' {
   }
 }
 
-export enum EResponseCode {
+export enum EResponseFlag {
   ERROR,
   SUCCESS
 }
@@ -24,7 +24,12 @@ export enum EResponseStatus {
   ERROR = 500
 }
 
-export enum EResponseMsg {
+export enum EErrorResponseMsg {
   INVALID_PARAMS = '参数不正确',
   DEFAULT_ERROR = ''
+}
+
+export enum EErrorResponseCode {
+  DEFAULT_ERROR_CODE = 10000,
+  INVALID_PARAMS_CODE = 10001
 }

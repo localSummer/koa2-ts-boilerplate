@@ -27,7 +27,10 @@ app.use(
 );
 app.use(json());
 app.use(koaLogger());
+// 公共资源访问
 app.use(koaStatic(path.resolve(__dirname, '../public')));
+// 用户上传资源访问
+app.use(koaStatic(path.resolve(__dirname, '../uploads')));
 
 // logger 控制台请求输出
 app.use(async (ctx, next) => {

@@ -4,14 +4,17 @@
   "description": "koa2 + typescript 开发环境",
   "main": "dist/app.js",
   "scripts": {
-    "compile": "npx tsc --project tsconfig.json -w",
+    "compile": "tsc --project tsconfig.json -w",
     "dev": "cross-env NODE_ENV=development npx nodemon bin/www",
-    "build": "npx tsc --project tsconfig.json",
+    "build": "tsc --project tsconfig.json",
     "prd": "cross-env NODE_ENV=production npx pm2 start bin/www",
     "clear": "rm -r dist",
-    "eslint": "npx eslint src --ext .ts",
-    "gulp-compile": "npx gulp dev",
-    "gulp-build": "npx gulp build"
+    "eslint": "eslint src --ext .ts",
+    "gulp-compile": "gulp dev",
+    "gulp-build": "gulp build",
+    "test": "jest --passWithNoTests --updateSnapshot",
+    "test:watch": "jest --coverage --watch",
+    "test:prod": "npm run eslint && npm run test -- --no-cache"
   },
   "keywords": [
     "koa2",
@@ -26,6 +29,7 @@
   "license": "ISC",
   "devDependencies": {
     "@types/fs-extra": "^9.0.1",
+    "@types/jest": "^26.0.3",
     "@types/koa": "^2.11.3",
     "@types/koa-bodyparser": "^4.3.0",
     "@types/koa-json": "^2.0.18",
@@ -46,10 +50,13 @@
     "gulp-cli": "^2.3.0",
     "gulp-typescript": "^6.0.0-alpha.1",
     "gulp-uglify-es": "^2.0.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^26.1.0",
     "mddir": "^1.1.1",
     "nodemon": "^2.0.4",
     "prettier": "^1.19.1",
     "sequelize-cli": "^6.1.0",
+    "ts-jest": "^26.1.1",
     "typescript": "^3.6.4"
   },
   "dependencies": {
